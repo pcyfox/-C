@@ -16,10 +16,10 @@ int sort(T *data,int len){
     }
 	//先找出前n个数中最大的那个数，并把它放在最后,然后缩小规模重复操作
     for(int i=len-1;i>0;i--){
-	  for(int j=0+1;j<=i;j++){
-	     if(data[j]>data[i]){
-       		  swap(data,j,i);
-         }
+	  for(int j=0;j<i;j++){
+		  if(data[j]>data[j+1]){
+       	     swap(data,j,j+1);
+	   	  }
 	  }
     }
 
@@ -28,7 +28,7 @@ int sort(T *data,int len){
 
 
 int main(void){
-	int len=11;
+	int len =TEST_DATA_LEN;
     printArray(testData,len,"raw");
     sort(testData,len);
     printArray(testData,len,"after bubble sort");

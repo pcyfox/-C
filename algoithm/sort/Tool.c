@@ -1,10 +1,13 @@
 #ifndef HEWADER_SORT
 #define HEWADER_SORT
+
+#define TEST_DATA_LEN 11
+
 #include<stdio.h>
 
 typedef int T;
 
-T testData[]={0,9,1,3,0,7,5,6,8,2,4};
+T testData[TEST_DATA_LEN]={0,9,1,3,0,7,5,6,8,2,4};
 
 void printArray(T *array,int len,char* tag){
     printf("----------------%s------------------\n",tag);
