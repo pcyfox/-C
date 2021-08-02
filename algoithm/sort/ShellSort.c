@@ -13,7 +13,30 @@
 #include "Tool.c"
 
 int sort(T *data,int len){
-    for(int h=3;h>0;h--){
+    for(int h=len>>1;h>0;h/=2){
+		printf("sort called with h=%d\n",h);
+		for(int i=h;i<len;i++){
+			for(int j=i;j>=h+1;j-=h){
+				if(data[j]<data[j-h]){
+					swap(data,j,j-h);
+				  }
+			 }
+		}
+	}
+
+	return 1;
+}
+/**
+ *knuth 序列：h=3*h+1;1<=h<=len 
+ */
+int sort2(T *data,int len){
+   int h=1;
+   while(h<=len/3){
+	   h=3*h+1;
+   } 
+
+   for(int gap=h;gap>0;gap=(gap-1)/3){
+		printf("sort called with gap=%d\n",gap);
 		for(int i=h;i<len;i++){
 			for(int j=i;j>=h+1;j-=h){
 				if(data[j]<data[j-h]){
@@ -26,11 +49,11 @@ int sort(T *data,int len){
 	return 1;
 }
 
-
 int main(void){
 	int len =getTestDataSize();
     printArray(testData,len,"raw");
-    sort(testData,len);
+    //sort(testData,len);
+    sort2(testData,len);
     printArray(testData,len,"after shwll sort");
 }
 
