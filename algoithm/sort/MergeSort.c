@@ -1,13 +1,13 @@
 
 
 /**
- *插入排序：
+ *归并排序：
  *核心思想：
- *从第一个书开始（不是第0个）依次向前比较，把较大的数向后挪动
+ *
  *特点：
  *稳定性:稳定
- *时间复杂度：最好与最坏的情况都是：O(n^2) 
- *空间复杂度：O(1) 
+ *时间复杂度：
+ *空间复杂度：O(n) 
  */
 #include "Tool.c"
 #include <stdlib.h>
@@ -24,39 +24,49 @@ int sort(T *data,int len){
 }
 
 
-int merge(int *data,int len){
-    printArray(data,len,"data");
-    //int *temp=(int *)malloc(sizeof(int)*len);
-    int temp[len];
-	int mid=len>>1;
-	int i=0;
-	int j=mid+1;
-	int k=0;
-	while(i<=mid&&j<=len-1){
+
+
+void merge2(int *data,int l,int m,int r){
+    printf("-----------merge--------------\n");
+    printf("l=%d,m=%d,r=%d\n",l,m,r);
+	int len =r-l+1;
+	int mid=m;
+	int i=l;
+	int j=m+1;
+	int k=i;
+	while(i<=mid&&j<=r){
 		if(data[i]<=data[j]){
-			temp[k]=data[i];
-			i++;
-			k++;
+			data[k++]=data[i++];
 		}else{
-			temp[k]=data[j];
-			j++;
-			k++;
+			data[k++]=data[j++];
 		}
 	}
-	while(i<=mid)temp[k++]=data[i++];
-	while(j<=len-1)temp[k++]=data[j++];
-    printArray(temp,len,"temp");
-	return 1;
+	while(i<=mid)data[k++]=data[i++];
+    while(j<=r)data[k++]=data[j++];
+}
+
+
+void merge(int *data,int l,int m,int r){
+   int h=sizeof(data)/2;
+  
+
+   while(){}
+
+
+
 }
 
 
 
+
+
+
 int main(void){
-//	int len =getTestDataSize();
-//  printArray(testData,7,"raw");
-    int testData[]={1,3,4,6,2,5,7};
-    merge(testData,7);
-    //printArray(testData,7,"after bubble sort");
+    int testData[]={1,3,4,6,8,5,7,2};
+    printArray(testData,8,"raw");
+
+    merge(testData,0,3,7);
+    printArray(testData,8,"after sort");
 }
 
 
